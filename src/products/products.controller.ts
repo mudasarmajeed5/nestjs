@@ -8,13 +8,20 @@ import {
   Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { Product, UpdateProductDto } from './products.model';
+import { UpdateProductDto } from './products.model';
 
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductsService) {}
+  @Get()
+  fetchQuery(@Query("name") name: string){
+    
+    return `Name: ${name}`
+  }
+
   @Get(':id')
   getProduct(@Param('id') id: string) {
     return this.productService.getProduct(id);
