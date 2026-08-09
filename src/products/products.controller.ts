@@ -4,6 +4,8 @@ import {
   Delete,
   Get,
   Header,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -18,7 +20,6 @@ export class ProductsController {
   constructor(private productService: ProductsService) {}
   @Get()
   fetchQuery(@Query("name") name: string){
-    
     return `Name: ${name}`
   }
 
@@ -27,7 +28,6 @@ export class ProductsController {
     return this.productService.getProduct(id);
   }
   @Get()
-  @Header('Content-Type', 'application/json')
   getProducts() {
     return this.productService.getProducts();
   }
